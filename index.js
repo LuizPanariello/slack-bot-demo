@@ -11,7 +11,13 @@ exports.handler = function(event, context, callback) {
 
     console.log("SAÍDA:", action);
 
-    callback(null, action);
+    context.succeed({
+        "statusCode": 200,
+        "headers": { 
+            "Content-Type": "application/json"  
+        },
+        "body": JSON.stringify(action)
+    });
 }
 
 /**
@@ -27,7 +33,7 @@ function processCommands(event) {
     if (event && event.command) {
         var command = decodeURIComponent(event.command.trim()).replace("/", "");
         console.log("Comando executado: ", command, commands[command]);     
-        return commands[command]("ae");
+        return commands[command](event.text);
     }
 
     return commands.error('Event not specified');
