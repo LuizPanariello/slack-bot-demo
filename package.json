@@ -1,0 +1,16 @@
+{
+  "name": "aws-meetup-bot",
+  "version": "1.0.0",
+  "description": "Criação do Bot para demo na AWSMeetup",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "luiz panariello",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.1.1"
+  }
+}
