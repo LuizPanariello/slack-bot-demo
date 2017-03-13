@@ -32,7 +32,9 @@ function processCommands(event) {
 
     if (event && event.command) {
         var command = decodeURIComponent(event.command.trim()).replace("/", "");
-        console.log("Comando executado: ", command, commands[command]);     
+        
+        console.log("Comando executado: ", command, commands[command]);
+
         return commands[command](event.text);
     }
 
