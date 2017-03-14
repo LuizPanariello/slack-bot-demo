@@ -2,6 +2,10 @@ const commands = require('./lib/commands');
 const helper = require('./lib/helper')
 /*
  * Handler de entrada dos comandos
+ * Event -> Evento do Lambda contém todos os dados da requisição
+ * Context -> Contém os callbacks para sucesso e erro da aplicação
+ * Callback -> Você consegue devolver usando o callback porém sempre 
+ * precisa ser no caso de erro primeiro param e segundo param o acerto 
  */
 exports.handler = function(event, context, callback) {
     console.log("EVENTO DE ENTRADA:", event);
@@ -32,9 +36,7 @@ function processCommands(event) {
 
     if (event && event.command) {
         var command = decodeURIComponent(event.command.trim()).replace("/", "");
-        
         console.log("Comando executado: ", command, commands[command]);
-
         return commands[command](event.text);
     }
 
